@@ -4,27 +4,42 @@ new Vue({
     el: '#chat-app',
     data: {
         message: '',
-        listaMensaje: [{texto: "algo", fecha: new Date().toLocaleDateString()}]
+        listaMensaje: [],
+        name_user: 'Anonimous',
+       
     },
     mounted(){
-        console.log("mounted");
+      this.name_user = prompt("Ingrese su nombre:")
+        
+    },
+    beforeCreate(){
+        
+
     },
     created() {
-        const vm = this;
-        socket.on('chat message', (msg) =>{
+        //const vm = this;
+        
+        socket.on('chat message', (msg, name_user) =>{
             this.listaMensaje.push({
             texto: msg,
-            fecha: new Date().toLocaleDateString()
+            fecha: new Date().toLocaleDateString(), 
+            procedencia: name_user
             })
-            console.log(msg);
+          
         
         })
     },
     methods: {
         sendMessage() {
-            socket.emit('chat message', this.message);
+            socket.emit('chat message', this.message, this.name_user);
             this.message = '';
-            console.log("mensaje enviado");
+           
+        },
+
+        
+    }, 
+    computed:{
+       
         }
-    }
+    
 });

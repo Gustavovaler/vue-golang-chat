@@ -9,21 +9,22 @@
     <link rel="stylesheet" href="main.css">
 
 </head>
-<body>
+<body  >
+    <div id="chat-app">
 
     <nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand ml-5">Inicio</a>
+    <a href="/" class="navbar-brand ml-5"  >{{name_user}}</a>
     </nav>
 
     <div class="container mt-5">
 
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div id="chat-app" class="card">
-                    <div class="card-body">
+                <div class="card">
+                    <div class="card-body text-left">
                         <ul>
-                            <li  v-for = " m in listaMensaje" >
-                                {{m.texto}} - {{m.fecha}}
+                           <li  v-for = " m in listaMensaje">
+                               {{m.procedencia}}: {{m.texto}} - <span id="fecha-texto">{{m.fecha}}</span>
                             </li>
                             
                         </ul>
@@ -41,7 +42,7 @@
 
     </div>
 
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="main.js"></script>

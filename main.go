@@ -22,8 +22,8 @@ func main() {
 		return nil
 	})
 
-	server.OnEvent("/", "chat message", func(so socketio.Conn, msg string){
-		server.BroadcastToRoom("","chat_room", "chat message", msg)
+	server.OnEvent("/", "chat message", func(so socketio.Conn, msg string , user string){
+		server.BroadcastToRoom("","chat_room", "chat message", msg, user)
 		
 	})
 
